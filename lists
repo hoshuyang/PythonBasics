@@ -1,0 +1,43 @@
+# Read a list of integers from user input #
+
+# User Input (default in String)
+IntegerList = input('Enter a list of integers (split by commas)')
+# Split Input by their Commas
+IntegerList = IntegerList.split(',')
+n = len(IntegerList)
+for x in range(n):
+    # Convert each item in list to Integers
+    IntegerList[x] = int(IntegerList[x])
+print(IntegerList)
+
+
+# Find all pairs of numbers in the list whose product is even and whose sum is odd #
+PairList = []
+for y in range(n):
+    for z in range(y+1, n):
+        # Requirement for Sum is Odd
+        if (IntegerList[y]+IntegerList[z]) % 2 != 0:
+            # Requirement for Product is Even
+            if (IntegerList[y]*IntegerList[z]) % 2 == 0:
+                # If Both Requirements are Satisfied, Add into the pair List
+                PairList.append([IntegerList[y],IntegerList[z]])
+
+
+# Print out a Formatted List of the Pairs #
+# Function that multiplies items in a list
+def MultiplyList(MyList):
+        result = 1
+        for x in MyList:
+            result *= x
+        return result
+# Function that Sums items in a list
+def SumList(MyList):
+    result = 0
+    for x in MyList:
+        result += x
+    return result
+
+PairLen = len(PairList)
+print('Number of pairs that satisfies requirements:  ', PairLen)
+for a in range(PairLen):
+    print(PairList[a],'; Sum =', SumList(PairList[a]), 'Product =',MultiplyList(PairList[a]))
